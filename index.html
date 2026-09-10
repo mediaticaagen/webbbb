@@ -30,11 +30,11 @@
 
   /* ===================== NAVBAR (floating pill, matches reference) ===================== */
   header.nav{
-    position:fixed; top:14px; left:50%; transform:translateX(-50%);
-    width:calc(100% - px); max-width:500px;
+    position:fixed; top:40px; left:50%; transform:translateX(-50%);
+    width:calc(100% - 34px); max-width:550px;
     display:flex; align-items:center; justify-content:space-between;
     gap:8px;
-    padding:6px 6px 6px 18px;
+    padding:9px 9px 9px 32px;
     background:linear-gradient(180deg, rgba(18,28,52,0.85), rgba(8,12,22,0.92));
     border:1px solid rgba(255,255,255,0.09);
     border-radius:999px;
@@ -44,7 +44,7 @@
   }
 
   .logo-mark{ display:flex; align-items:center; gap:8px; cursor:pointer; flex-shrink:0; }
-  .logo-mark img{ height:24px; width:auto; display:block; }
+  .logo-mark img{ height:37px; width:auto; display:block; }
 
   nav.links{ display:flex; align-items:center; gap:2px; }
   nav.links a{
@@ -66,7 +66,7 @@
 
   .burger{
     display:flex; align-items:center; justify-content:center;
-    width:34px; height:34px; border-radius:50%;
+    width:37px; height:37px; border-radius:37%;
     border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.03);
     cursor:pointer; flex-shrink:0; z-index:1100; position:relative;
   }
@@ -80,11 +80,11 @@
   .burger.open span:nth-child(3){ transform:translateY(0) rotate(-45deg); }
 
   @media (max-width:920px){ nav.links{ display:none; } .nav-right .cta-pill{ display:none; } }
-  @media (max-width:560px){ header.nav{ padding:5px 5px 5px 14px; top:10px; } }
+  @media (max-width:560px){ header.nav{ padding:8px 8px 8px 18px; top:10px; } }
 
   /* Dropdown menu panel, opened/closed by the burger button */
   .nav-dropdown{
-    position:fixed; top:64px; left:50%; transform:translateX(-50%) translateY(-8px);
+    position:fixed; top:104px; left:50%; transform:translateX(-50%) translateY(-8px);
     width:calc(100% - 32px); max-width:1040px;
     background:linear-gradient(180deg, rgba(10,14,26,0.97), rgba(6,8,14,0.98));
     border:1px solid rgba(255,255,255,0.08);
@@ -246,7 +246,202 @@
   .contact-form textarea{ min-height:110px; resize:vertical; }
   .contact-form label{ font-size:12px; letter-spacing:1px; color:var(--dim2); text-transform:uppercase; margin-bottom:-6px; }
   .form-note{ font-size:12px; color:var(--dim2); margin-top:4px; }
+
+  /* ===================== SERVICE ICONS ===================== */
+  .svc-head{display:flex;align-items:center;gap:14px;}
+  .svc-icon{
+    width:48px;height:48px;flex:0 0 48px;border-radius:14px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,rgba(58,160,255,.18),rgba(60,230,197,.10));
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:inset 0 0 24px rgba(58,160,255,.06);
+    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .svc-icon svg{width:24px;height:24px;stroke:var(--blue2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .svc-card:hover .svc-icon{transform:translateY(-4px) rotate(-2deg);border-color:rgba(60,230,197,.45);box-shadow:0 10px 30px rgba(58,160,255,.15);}
+
+  /* ===================== PORTFOLIO IMAGE PLACEHOLDERS ===================== */
+  .thumb{background-size:cover;background-position:center;}
+  .thumb.has-image{padding:0;isolation:isolate;}
+  .thumb.has-image::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.82));z-index:1;pointer-events:none;}
+  .thumb.has-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .4s ease;}
+  .thumb.has-image span{position:relative;z-index:2;padding:10px 0;}
+  .thumb.has-image:hover img{transform:scale(1.06);filter:saturate(1.08);}
+  .image-placeholder{font-size:11px!important;color:rgba(255,255,255,.6);letter-spacing:.2px;}
+
+  /* ===================== REEL CARDS ===================== */
+  .video-card{cursor:pointer;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;}
+  .video-card:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(0,0,0,.35);border-color:rgba(60,230,197,.35);}
+  .video-card.has-reel{display:block;text-decoration:none;}
+  .video-card.has-reel .reel-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s ease;z-index:0;}
+  .video-card.has-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 35%,rgba(0,0,0,.8));z-index:1;pointer-events:none;}
+  .video-card.has-reel:hover .reel-poster{transform:scale(1.06);}
+  .video-card .badge,.video-card .cta{z-index:2;}
+
+  /* ===================== SOCIAL FOOTER ===================== */
+  .social-links{display:flex;align-items:center;gap:10px;margin-top:18px;}
+  .social-link{
+    width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+    border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
+    transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease;
+  }
+  .social-link svg{width:19px;height:19px;fill:currentColor;}
+  .social-link:hover{transform:translateY(-4px) scale(1.04);background:rgba(58,160,255,.12);border-color:rgba(60,230,197,.45);box-shadow:0 10px 24px rgba(58,160,255,.18);}
+
+  /* ===================== MICRO-ANIMATIONS ===================== */
+  .btn,.cta-pill,.drop-cta,.ptab{transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease,background .25s ease;}
+  .btn:hover,.cta-pill:hover,.drop-cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(58,160,255,.22);}
+  .btn:active,.cta-pill:active,.drop-cta:active{transform:translateY(-1px) scale(.98);}
+  .ptab{cursor:default;}
+  .ptab:hover{transform:translateY(-2px);background:rgba(255,255,255,.07);border-color:rgba(60,230,197,.35);}
+  .svc-card,.case-card,.card,.why-card,.flow-step,.info-item{
+    transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+  }
+  .svc-card:hover,.case-card:hover,.card:hover,.why-card:hover,.flow-step:hover,.info-item:hover{
+    transform:translateY(-5px);border-color:rgba(255,255,255,.16);box-shadow:0 16px 38px rgba(0,0,0,.22);
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important;}
+  }
+
 </style>
+>
+
+
+<style id="responsive-sizing">
+/* ===================== RESPONSIVE SIZING ===================== */
+:root{
+  --content-max:1180px;
+  --page-pad:clamp(16px,4vw,40px);
+}
+
+/* Desktop / large screens */
+.wrap,.foot-grid,.foot-bottom{width:min(calc(100% - 2*var(--page-pad)),var(--content-max));}
+.page-section{padding-left:var(--page-pad);padding-right:var(--page-pad);}
+footer{padding-left:var(--page-pad);padding-right:var(--page-pad);}
+
+h1.big{font-size:clamp(34px,4vw,52px);}
+h2.mid{font-size:clamp(25px,2.6vw,34px);}
+.hero .word{font-size:clamp(48px,6vw,76px);}
+.hero .word2{font-size:clamp(22px,3vw,36px);}
+
+/* Tablet */
+@media (max-width: 920px){
+  header.nav{
+    width:calc(100% - 28px);
+    max-width:none;
+  }
+  .page-section{padding-top:52px;padding-bottom:76px;}
+  .hero{padding-top:28px;}
+  .foot-grid{grid-template-columns:1.2fr 1fr;}
+  .foot-grid>div:first-child{grid-column:1/-1;}
+}
+
+/* Phones: compact navbar = logo + menu only */
+@media (max-width: 800px){
+  header.nav{
+    top:40px;
+    width:calc(100% - 310px);
+    max-width:none;
+    min-height:48px;
+    padding:12px 12px 12px 18px;
+    gap:8px;
+    border-radius:40px;
+  }
+
+  .logo-mark{min-width:0;}
+  .logo-mark img{height:37px;width:auto;max-width:180px;object-fit:contain;}
+
+  nav.links,.nav-right .cta-pill{display:none!important;}
+  .nav-right{margin-left:auto;gap:0;}
+  .burger{
+    display:flex!important;
+    width:38px;height:38px;
+    border-radius:12px;
+  }
+
+  .nav-dropdown{
+    top:113px;
+    width:calc(100% - 20px);
+    max-width:none;
+    border-radius:18px;
+    padding:4px 18px 18px;
+  }
+
+  main{padding-top:72px;}
+  .page-section{
+    min-height:auto;
+    padding:42px 16px 70px;
+    scroll-margin-top:72px;
+  }
+  .wrap{width:100%;max-width:none;}
+
+  .tag-eyebrow{font-size:10px;letter-spacing:1.5px;margin-bottom:11px;}
+  h1.big{font-size:clamp(29px,8.2vw,40px);line-height:1.12;margin-bottom:16px;}
+  h2.mid{font-size:clamp(23px,6.5vw,30px);}
+  p.lead{font-size:14px;line-height:1.65;}
+
+  .hero{padding-top:12px;padding-bottom:30px;}
+  .hero .word{font-size:clamp(38px,12vw,58px);line-height:1;}
+  .hero .word2{font-size:clamp(18px,6vw,27px);letter-spacing:5px;}
+  .hero-box{margin-top:25px;padding:18px 0;max-width:100%;}
+  .hero-box h3{font-size:20px;}
+  .hero-box p{font-size:14px;}
+  .hero-services{margin-top:25px;font-size:10px;letter-spacing:1.3px;line-height:1.8;}
+
+  .grid3,.grid2{grid-template-columns:1fr;gap:14px;}
+  .svc-card,.case-card,.card,.why-card,.flow-step,.info-item,.contact-form{padding:19px;}
+  .svc-card{min-height:0;}
+  .svc-head{gap:11px;}
+  .svc-icon{width:42px;height:42px;flex-basis:42px;border-radius:12px;}
+  .svc-icon svg{width:21px;height:21px;}
+  .svc-card h3{font-size:18px;margin-bottom:11px;}
+  .svc-sub{font-size:13px;}
+  .svc-sub-p{font-size:12.5px;line-height:1.5;}
+
+  .why-card{gap:12px;}
+  .why-num{font-size:31px;}
+  .why-card p{font-size:12.5px;}
+  .flow-wrap{gap:10px;}
+  .flow-step{min-width:0;flex-basis:100%;padding:16px;}
+
+  .thumb-grid,.thumb-grid.cols3,.thumb-grid.cols4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .thumb{padding:10px;}
+  .thumb.has-image span{padding:7px 0;font-size:10.5px;}
+  .portfolio-tabsrow{gap:7px;margin:18px 0 24px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px;}
+  .ptab{padding:7px 12px;font-size:10.5px;flex:0 0 auto;}
+  .videos-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .video-card .badge{top:8px;left:8px;font-size:9px;padding:4px 7px;}
+  .video-card .cta{bottom:8px;left:8px;font-size:10px;}
+
+  .contact-hero{padding:8px 0 24px;}
+  .contact-hero h1{font-size:clamp(29px,8vw,40px);line-height:1.1;}
+  .contact-hero p{font-size:14px;line-height:1.5;}
+  .contact-grid{grid-template-columns:1fr;gap:16px;margin-top:20px;}
+  .info-list{gap:11px;}
+  .info-item p{font-size:14px;overflow-wrap:anywhere;}
+  .contact-form input,.contact-form textarea{font-size:13px;padding:12px;}
+  .btn{width:100%;justify-content:center;padding:13px 18px;font-size:13px;}
+
+  footer{padding:38px 16px 24px;}
+  .foot-grid{width:100%;grid-template-columns:1fr;gap:25px;}
+  .foot-grid>div:first-child{grid-column:auto;}
+  .foot-logo{font-size:18px;}
+  .foot-grid li{font-size:13px;}
+  .foot-bottom{width:100%;margin-top:25px;padding-top:16px;font-size:11px;}
+}
+
+/* Very small phones */
+@media (max-width: 380px){
+  header.nav{width:calc(100% - 14px);padding-left:9px;}
+  .logo-mark img{height:22px;max-width:155px;}
+  .burger{width:36px;height:36px;}
+  main{padding-top:68px;}
+  .page-section{padding-left:13px;padding-right:13px;}
+  .thumb-grid,.thumb-grid.cols3,.thumb-grid.cols4,.videos-grid{gap:8px;}
+}
+</style>
+
 </head>
 <body>
 
@@ -330,51 +525,82 @@
     <div class="wrap">
       <div class="tag-eyebrow"><span class="dot"></span>Our Services</div>
       <h1 class="big">WHAT WE DO</h1>
+      <p class="lead" style="max-width:760px;">Strategy, design, content, video and digital marketing — all under one creative direction.</p>
 
       <div class="grid3">
         <div class="svc-card">
-          <div><div class="num">01</div><h3>SOCIAL MEDIA</h3></div>
-          <div><div class="tags">
-            <span class="tagpill"><span class="tdot"></span>Content Planning</span>
-            <span class="tagpill"><span class="tdot"></span>Management</span>
-            <span class="tagpill"><span class="tdot"></span>Publishing</span>
-          </div><div class="bar"></div></div>
+          <div class="svc-head">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="19" r="2"/><path d="m8 11 8-5M8 13l8 5"/></svg></div>
+            <div><div class="num">01</div><h3>SOCIAL MEDIA</h3></div>
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tagpill"><span class="tdot"></span>Content Planning</span>
+              <span class="tagpill"><span class="tdot"></span>Management</span>
+              <span class="tagpill"><span class="tdot"></span>Publishing</span>
+            </div>
+            <div class="bar"></div>
+          </div>
         </div>
         <div class="svc-card">
-          <div><div class="num">02</div><h3>CREATIVE DESIGN</h3></div>
-          <div><div class="tags">
-            <span class="tagpill"><span class="tdot"></span>Posts</span>
-            <span class="tagpill"><span class="tdot"></span>Carousels</span>
-            <span class="tagpill"><span class="tdot"></span>Stories</span>
-            <span class="tagpill"><span class="tdot"></span>Campaigns</span>
-          </div><div class="bar"></div></div>
+          <div class="svc-head">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18h1.2a1.8 1.8 0 0 0 0-3.6H12a1.8 1.8 0 0 1 0-3.6h2.5A6.5 6.5 0 0 0 21 7.5 8.8 8.8 0 0 0 12 3Z"/><circle cx="7.5" cy="10" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14" cy="7" r="1"/></svg></div>
+            <div><div class="num">02</div><h3>CREATIVE DESIGN</h3></div>
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tagpill"><span class="tdot"></span>Posts</span>
+              <span class="tagpill"><span class="tdot"></span>Carousels</span>
+              <span class="tagpill"><span class="tdot"></span>Stories</span>
+              <span class="tagpill"><span class="tdot"></span>Campaigns</span>
+            </div>
+            <div class="bar"></div>
+          </div>
         </div>
         <div class="svc-card">
-          <div><div class="num">03</div><h3>VIDEO PRODUCTION</h3></div>
-          <div><div class="tags">
-            <span class="tagpill"><span class="tdot"></span>Reels</span>
-            <span class="tagpill"><span class="tdot"></span>Promotional Videos</span>
-            <span class="tagpill"><span class="tdot"></span>Corporate Videos</span>
-          </div><div class="bar"></div></div>
+          <div class="svc-head">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3Z"/></svg></div>
+            <div><div class="num">03</div><h3>VIDEO PRODUCTION</h3></div>
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tagpill"><span class="tdot"></span>Reels</span>
+              <span class="tagpill"><span class="tdot"></span>Promotional Videos</span>
+              <span class="tagpill"><span class="tdot"></span>Corporate Videos</span>
+            </div>
+            <div class="bar"></div>
+          </div>
         </div>
       </div>
 
       <div class="grid2" style="max-width:800px; margin:20px auto 0;">
         <div class="svc-card">
-          <div><div class="num">04</div><h3>CONTENT CREATION</h3></div>
-          <div><div class="tags">
-            <span class="tagpill"><span class="tdot"></span>Educational</span>
-            <span class="tagpill"><span class="tdot"></span>Promotional</span>
-            <span class="tagpill"><span class="tdot"></span>Market Content</span>
-          </div><div class="bar"></div></div>
+          <div class="svc-head">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h5M9 13h6M9 17h6"/></svg></div>
+            <div><div class="num">04</div><h3>CONTENT CREATION</h3></div>
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tagpill"><span class="tdot"></span>Educational</span>
+              <span class="tagpill"><span class="tdot"></span>Promotional</span>
+              <span class="tagpill"><span class="tdot"></span>Market Content</span>
+            </div>
+            <div class="bar"></div>
+          </div>
         </div>
         <div class="svc-card">
-          <div><div class="num">05</div><h3>DIGITAL MARKETING</h3></div>
-          <div><div class="tags">
-            <span class="tagpill"><span class="tdot"></span>Campaign Creatives</span>
-            <span class="tagpill"><span class="tdot"></span>Paid Advertising</span>
-            <span class="tagpill"><span class="tdot"></span>Lead Generation</span>
-          </div><div class="bar"></div></div>
+          <div class="svc-head">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 18-7v16L3 13z"/><path d="M7 14v5a2 2 0 0 0 2 2h1l1-7"/></svg></div>
+            <div><div class="num">05</div><h3>DIGITAL MARKETING</h3></div>
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tagpill"><span class="tdot"></span>Campaign Creatives</span>
+              <span class="tagpill"><span class="tdot"></span>Paid Advertising</span>
+              <span class="tagpill"><span class="tdot"></span>Lead Generation</span>
+            </div>
+            <div class="bar"></div>
+          </div>
         </div>
       </div>
 
@@ -395,7 +621,12 @@
     </div>
   </section>
 
-  <!-- ===================== PORTFOLIO ===================== -->
+  <!-- ===================== PORTFOLIO =====================
+  IMAGE SETUP:
+  Replace each src="images/portfolio/..." with your real image path.
+  REEL SETUP:
+  Replace YOUR_REEL_LINK_01 ... YOUR_REEL_LINK_08 with the real Reel URLs.
+  ===================== -->
   <section class="page-section" id="portfolio">
     <div class="wrap">
       <div class="tag-eyebrow"><span class="dot"></span>Selected Work</div>
@@ -417,12 +648,12 @@
             <div class="tags"><span class="tagpill">CLEAN</span><span class="tagpill">PRECISE</span><span class="tagpill">MODERN</span><span class="tagpill">TRUSTED</span></div>
           </div>
           <div class="thumb-grid cols3">
-            <div class="thumb grad2"><span>+100 Financial Locations, 1 Click</span></div>
-            <div class="thumb grad4"><span>199+ App Downloads</span></div>
-            <div class="thumb grad1"><span>Gold Sunset — Buy or Sell?</span></div>
-            <div class="thumb grad2"><span>Stock Market Update</span></div>
-            <div class="thumb grad1"><span>Withdrawal & Deposit Made Simple</span></div>
-            <div class="thumb grad4"><span>Beirut Stock Exchange</span></div>
+            <div class="thumb has-image grad2"><img src="images/portfolio/01-100-financial-locations-1-click.jpg" alt="+100 Financial Locations, 1 Click" loading="lazy"><span>+100 Financial Locations, 1 Click <small class="image-placeholder">• replace image path</small></span></div>
+            <div class="thumb has-image grad4"><img src="images/portfolio/02-199-app-downloads.jpg" alt="199+ App Downloads" loading="lazy"><span>199+ App Downloads <small class="image-placeholder">• replace image path</small></span></div>
+            <div class="thumb has-image grad1"><img src="images/portfolio/03-gold-sunset-buy-or-sell.jpg" alt="Gold Sunset — Buy or Sell?" loading="lazy"><span>Gold Sunset — Buy or Sell? <small class="image-placeholder">• replace image path</small></span></div>
+            <div class="thumb has-image grad2"><img src="images/portfolio/04-stock-market-update.jpg" alt="Stock Market Update" loading="lazy"><span>Stock Market Update <small class="image-placeholder">• replace image path</small></span></div>
+            <div class="thumb has-image grad1"><img src="images/portfolio/05-withdrawal-deposit-made-simple.jpg" alt="Withdrawal &amp; Deposit Made Simple" loading="lazy"><span>Withdrawal &amp; Deposit Made Simple <small class="image-placeholder">• replace image path</small></span></div>
+            <div class="thumb has-image grad4"><img src="images/portfolio/06-beirut-stock-exchange.jpg" alt="Beirut Stock Exchange" loading="lazy"><span>Beirut Stock Exchange <small class="image-placeholder">• replace image path</small></span></div>
           </div>
         </div>
       </div>
@@ -431,16 +662,16 @@
         <h3 class="sub-h">Social Media Creative</h3>
         <p class="sub-p">Turning financial information into visual communication.</p>
         <div class="thumb-grid">
-          <div class="thumb grad1"><span>Tariff Pressure Update</span></div>
-          <div class="thumb grad1"><span>Trade on MetaTrader 5</span></div>
-          <div class="thumb grad1"><span>Gold Down 25%</span></div>
-          <div class="thumb grad1"><span>A Decision Must Be Made</span></div>
-          <div class="thumb grad1"><span>Awareness Before Opportunity</span></div>
-          <div class="thumb grad2"><span>Learn Trading Step by Step</span></div>
-          <div class="thumb grad3"><span>Gold Collapse — Real?</span></div>
-          <div class="thumb grad4"><span>Demo Before You Risk</span></div>
-          <div class="thumb grad2"><span>Copy Trading</span></div>
-          <div class="thumb grad2"><span>Back To The Trading World</span></div>
+          <div class="thumb has-image grad1"><img src="images/portfolio/07-tariff-pressure-update.jpg" alt="Tariff Pressure Update" loading="lazy"><span>Tariff Pressure Update <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad1"><img src="images/portfolio/08-trade-on-metatrader-5.jpg" alt="Trade on MetaTrader 5" loading="lazy"><span>Trade on MetaTrader 5 <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad1"><img src="images/portfolio/09-gold-down-25.jpg" alt="Gold Down 25%" loading="lazy"><span>Gold Down 25% <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad1"><img src="images/portfolio/10-a-decision-must-be-made.jpg" alt="A Decision Must Be Made" loading="lazy"><span>A Decision Must Be Made <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad1"><img src="images/portfolio/11-awareness-before-opportunity.jpg" alt="Awareness Before Opportunity" loading="lazy"><span>Awareness Before Opportunity <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad2"><img src="images/portfolio/12-learn-trading-step-by-step.jpg" alt="Learn Trading Step by Step" loading="lazy"><span>Learn Trading Step by Step <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad3"><img src="images/portfolio/13-gold-collapse-real.jpg" alt="Gold Collapse — Real?" loading="lazy"><span>Gold Collapse — Real? <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad4"><img src="images/portfolio/14-demo-before-you-risk.jpg" alt="Demo Before You Risk" loading="lazy"><span>Demo Before You Risk <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad2"><img src="images/portfolio/15-copy-trading.jpg" alt="Copy Trading" loading="lazy"><span>Copy Trading <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad2"><img src="images/portfolio/16-back-to-the-trading-world.jpg" alt="Back To The Trading World" loading="lazy"><span>Back To The Trading World <small class="image-placeholder">• replace image path</small></span></div>
         </div>
       </div>
 
@@ -448,13 +679,13 @@
         <h2 class="mid">INVESTMENT / <span class="mid-light">TRENDS SHIFT</span></h2>
         <p class="sub-p">Social Media Creative Design</p>
         <div class="thumb-grid cols4">
-          <div class="thumb grad3"><span>Trends Shift Real Estate Fund</span></div>
-          <div class="thumb grad3"><span>Trends Shift Digital Currency</span></div>
-          <div class="thumb grad4"><span>Trends Shift Affiliate</span></div>
-          <div class="thumb grad4"><span>VIP Membership Cards</span></div>
-          <div class="thumb grad3"><span>TS8 Profit Report</span></div>
-          <div class="thumb grad4"><span>Basic Membership Benefits</span></div>
-          <div class="thumb grad3"><span>Professional Training Courses</span></div>
+          <div class="thumb has-image grad3"><img src="images/portfolio/17-trends-shift-real-estate-fund.jpg" alt="Trends Shift Real Estate Fund" loading="lazy"><span>Trends Shift Real Estate Fund <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad3"><img src="images/portfolio/18-trends-shift-digital-currency.jpg" alt="Trends Shift Digital Currency" loading="lazy"><span>Trends Shift Digital Currency <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad4"><img src="images/portfolio/19-trends-shift-affiliate.jpg" alt="Trends Shift Affiliate" loading="lazy"><span>Trends Shift Affiliate <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad4"><img src="images/portfolio/20-vip-membership-cards.jpg" alt="VIP Membership Cards" loading="lazy"><span>VIP Membership Cards <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad3"><img src="images/portfolio/21-ts8-profit-report.jpg" alt="TS8 Profit Report" loading="lazy"><span>TS8 Profit Report <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad4"><img src="images/portfolio/22-basic-membership-benefits.jpg" alt="Basic Membership Benefits" loading="lazy"><span>Basic Membership Benefits <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad3"><img src="images/portfolio/23-professional-training-courses.jpg" alt="Professional Training Courses" loading="lazy"><span>Professional Training Courses <small class="image-placeholder">• replace image path</small></span></div>
           <div class="thumb grad4 wide" style="grid-column:span 2;"><span>100 Royal Ambassadors — I Am One</span></div>
         </div>
       </div>
@@ -463,26 +694,58 @@
         <div class="tag-eyebrow"><span class="dot"></span>Videography & Reels</div>
         <h2 class="mid">From concept to final frame.</h2>
         <div class="videos-grid">
-          <div class="video-card grad1"><div class="badge">&#128065; 262K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
-          <div class="video-card grad2"><div class="badge">&#128065; 82.7K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
-          <div class="video-card grad3"><div class="badge">&#128065; 46.9K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
-          <div class="video-card grad4"><div class="badge">&#128065; 33.1K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
+          <a class="video-card has-reel grad1" href="YOUR_REEL_LINK_01" target="_blank" rel="noopener" aria-label="Watch reel 1">
+  <img class="reel-poster" src="images/reels/reel-01.jpg" alt="Reel 1 poster" loading="lazy">
+  <div class="badge">&#128065; 262K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
+          <a class="video-card has-reel grad2" href="YOUR_REEL_LINK_02" target="_blank" rel="noopener" aria-label="Watch reel 2">
+  <img class="reel-poster" src="images/reels/reel-02.jpg" alt="Reel 2 poster" loading="lazy">
+  <div class="badge">&#128065; 82.7K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
+          <a class="video-card has-reel grad3" href="YOUR_REEL_LINK_03" target="_blank" rel="noopener" aria-label="Watch reel 3">
+  <img class="reel-poster" src="images/reels/reel-03.jpg" alt="Reel 3 poster" loading="lazy">
+  <div class="badge">&#128065; 46.9K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
+          <a class="video-card has-reel grad4" href="YOUR_REEL_LINK_04" target="_blank" rel="noopener" aria-label="Watch reel 4">
+  <img class="reel-poster" src="images/reels/reel-04.jpg" alt="Reel 4 poster" loading="lazy">
+  <div class="badge">&#128065; 33.1K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
         </div>
         <div class="videos-grid">
-          <div class="video-card grad5"><div class="badge">&#128065; 4.1K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
-          <div class="video-card grad2"><div class="badge">&#128065; 15.1K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
-          <div class="video-card grad6"><div class="badge">&#128065; 2.1K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
-          <div class="video-card grad1"><div class="badge">&#128065; 21K</div><div class="cta"><span class="play">&#9654;</span>Click to view</div></div>
+          <a class="video-card has-reel grad5" href="YOUR_REEL_LINK_05" target="_blank" rel="noopener" aria-label="Watch reel 5">
+  <img class="reel-poster" src="images/reels/reel-05.jpg" alt="Reel 5 poster" loading="lazy">
+  <div class="badge">&#128065; 4.1K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
+          <a class="video-card has-reel grad2" href="YOUR_REEL_LINK_06" target="_blank" rel="noopener" aria-label="Watch reel 6">
+  <img class="reel-poster" src="images/reels/reel-06.jpg" alt="Reel 6 poster" loading="lazy">
+  <div class="badge">&#128065; 15.1K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
+          <a class="video-card has-reel grad6" href="YOUR_REEL_LINK_07" target="_blank" rel="noopener" aria-label="Watch reel 7">
+  <img class="reel-poster" src="images/reels/reel-07.jpg" alt="Reel 7 poster" loading="lazy">
+  <div class="badge">&#128065; 2.1K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
+          <a class="video-card has-reel grad1" href="YOUR_REEL_LINK_08" target="_blank" rel="noopener" aria-label="Watch reel 8">
+  <img class="reel-poster" src="images/reels/reel-08.jpg" alt="Reel 8 poster" loading="lazy">
+  <div class="badge">&#128065; 21K</div>
+  <div class="cta"><span class="play">&#9654;</span>Click to watch</div>
+</a>
         </div>
       </div>
 
       <div style="margin-top:55px;">
         <h3 class="sub-h">Branding & Multi-Industry Work</h3>
         <div class="thumb-grid cols4">
-          <div class="thumb grad4 wide"><span>Al Nakhwe Sweets — Brand Identity</span></div>
-          <div class="thumb grad2 wide"><span>CTC Cinema — Branding & Packaging</span></div>
-          <div class="thumb grad6 wide"><span>SaaS Product Illustrations</span></div>
-          <div class="thumb grad3 wide"><span>Dayan Travel — Campaign Design</span></div>
+          <div class="thumb has-image grad4 wide"><img src="images/portfolio/24-al-nakhwe-sweets-brand-identity.jpg" alt="Al Nakhwe Sweets — Brand Identity" loading="lazy"><span>Al Nakhwe Sweets — Brand Identity <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad2 wide"><img src="images/portfolio/25-ctc-cinema-branding-packaging.jpg" alt="CTC Cinema — Branding &amp; Packaging" loading="lazy"><span>CTC Cinema — Branding &amp; Packaging <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad6 wide"><img src="images/portfolio/26-saas-product-illustrations.jpg" alt="SaaS Product Illustrations" loading="lazy"><span>SaaS Product Illustrations <small class="image-placeholder">• replace image path</small></span></div>
+          <div class="thumb has-image grad3 wide"><img src="images/portfolio/27-dayan-travel-campaign-design.jpg" alt="Dayan Travel — Campaign Design" loading="lazy"><span>Dayan Travel — Campaign Design <small class="image-placeholder">• replace image path</small></span></div>
         </div>
       </div>
 
@@ -559,6 +822,20 @@
     <div>
       <div class="foot-logo"><span class="dot"></span>MEDIATICA<span>AGENCY</span></div>
       <p style="color:var(--dim); font-size:13.5px; line-height:1.6; max-width:320px;">A creative and digital marketing agency building strong, consistent digital brands — with deep experience in financial and trading content.</p>
+      <div class="social-links" aria-label="Mediatica social media">
+        <a class="social-link" href="https://www.instagram.com/mediatica.agency" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2"/></svg>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/share/1By7vYzPn8/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8h3V4.5h-3c-3.1 0-5 1.9-5 5.1V12H6v3.5h3V22h4v-6.5h3.2L17 12H13v-2.1C13 8.7 13.3 8 14 8Z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.tiktok.com/@mediatica_agency?_r=1&_t=ZS-99cO61bMYIk" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M14 4v10.2a4.8 4.8 0 1 1-4-4.7"/><path d="M14 4c.7 2.6 2.3 4.2 5 4.5"/></svg>
+        </a>
+        <a class="social-link" href="https://wa.me/9613183192" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.3-4.1A8.5 8.5 0 1 1 20.5 11.7Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 8.5c.3-.5.7-.5 1-.1l1 1.5c.2.3.1.6-.1.8l-.5.5c.7 1.3 1.7 2.3 3 3l.5-.5c.2-.2.5-.3.8-.1l1.5 1c.4.3.4.7-.1 1-.6.5-1.5.7-2.3.4-2.8-1-5.1-3.3-6.1-6.1-.3-.8-.1-1.7.4-2.3Z" fill="currentColor"/></svg>
+        </a>
+      </div>
     </div>
     <div>
       <h4>Menu</h4>
